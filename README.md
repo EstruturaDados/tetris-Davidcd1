@@ -7,9 +7,67 @@ O desafio está dividido em três níveis: Novato, Aventureiro e Mestre, com cad
 Você deve escolher qual desafio deseja realizar.
 
 
-🕹️ Desafio Tetris Stack - Controle de Peças (Nível Novato)🎯 Objetivo do ProjetoEste projeto implementa o sistema de gerenciamento de peças futuras para o jogo "Tetris Stack", focando na utilização da estrutura de dados Fila Circular para controlar a ordem de aparecimento das peças.Este projeto foi concluído no Nível Novato, conforme os requisitos do desafio da ByteBros.🛠️ Requisitos Funcionais Atendidos (Nível Novato)O programa tetris_stack.c implementa as seguintes funcionalidades:Estrutura da Peça: Utilização da struct Peca contendo um id (inteiro sequencial) e um tipo (caractere, e.g., 'I', 'O', 'T', 'L').Fila Circular: Implementação de uma Fila Circular com capacidade fixa de 5 peças (MAX_FILA = 5).Inicialização: A fila é preenchida com 5 peças geradas automaticamente no início da execução.Ação 'Jogar Peça' (1): Implementa a operação dequeue (remover da frente da fila).Mecanismo de Reposição: Após a remoção, uma nova peça é gerada e inserida automaticamente ao final da fila (enqueue) para manter a capacidade fixa de 5 peças.Visualização: A função mostrar_fila exibe o estado atual da fila após cada ação, garantindo a Usabilidade e Clareza da saída.⚙️ Estrutura do Código (tetris_stack.c)O código é modularizado em funções claras para cada operação da Fila:FunçãoFinalidadestruct PecaDefine a estrutura básica das peças (ID e Tipo).struct FilaDefine a Fila Circular com controle via inicio, fim e total.inicializar_filaZera os contadores da fila (inicio = 0, total = 0).fila_cheia / fila_vaziaValida as condições de inserção e remoção.enqueueInsere uma peça ao final, aplicando a aritmética modular (% MAX_FILA).dequeueRemove a peça do início, avançando o índice inicio circularmente.mostrar_filaPercorre e exibe os elementos da fila do inicio ao fim.gerarPecaCria uma nova peça com tipo aleatório e ID sequencial (proximoId).limparBufferFunção auxiliar para garantir que o scanf não gere erros no loop de menu.🚀 Como Compilar e RodarCompilação: Use um compilador C (como GCC) no terminal:Bashgcc tetris_stack.c -o tetris_stack
-Execução:Bash./tetris_stack
-Interação: Siga as opções do menu no terminal: 1 para Jogar Peça (dequeue) ou 0 para Sair.Lembre-se de verificar o seu arquivo .c e garantir que ele contém todos os comentários explicando o propósito de cada função e seção, conforme solicitado no tutorial. Feito isso, é só fazer o commit, push e enviar o link do repositório! Boa sorte!
+# 🕹️ Desafio Tetris Stack - Controle de Peças (Nível Novato)
+
+## 🎯 Objetivo do Projeto
+
+Este projeto implementa o sistema inicial de gerenciamento de peças futuras para o jogo "Tetris Stack". O foco principal é a utilização e manipulação correta da estrutura de dados **Fila Circular** em C.
+
+O projeto foi concluído no **Nível Novato** do desafio, demonstrando a correta implementação das operações FIFO (First-In, First-Out) em um array de tamanho fixo.
+
+---
+
+## ✅ Requisitos Funcionais Atendidos
+
+O código (`tetris_stack.c`) atende a todos os requisitos do Nível Novato:
+
+1.  **Fila Circular de Tamanho Fixo:** Implementada com `MAX_FILA = 5`.
+2.  **Estrutura de Dados:** Utiliza a `struct Peca` para representar as peças com um `id` (sequencial) e `tipo` (caractere, e.g., 'I', 'O', 'T', 'L').
+3.  **Inicialização:** A fila é preenchida automaticamente com 5 peças ao iniciar o programa.
+4.  **Ação Principal (1 - Jogar peça):**
+    * **Remoção (`dequeue`):** Remove a peça da **frente** da fila.
+    * **Reposição Automática:** Imediatamente após a remoção, uma nova peça é gerada (`gerarPeca`) e inserida no **final** da fila (`enqueue`), garantindo que a fila permaneça sempre com 5 elementos.
+5.  **Visualização:** A função `mostrar_fila` exibe o estado atual da fila, respeitando a ordem circular, após cada ação.
+
+---
+
+## ⚙️ Estrutura do Código em C
+
+O projeto é modularizado em funções, com base em conceitos de structs e arrays:
+
+### **Structs de Controle**
+
+* `Peca`: Define a peça com `id` e `tipo`.
+* `Fila`: Contém o array `itens[MAX_FILA]` e os indicadores `inicio`, `fim` e `total` para controle circular.
+
+### **Funções Principais da Fila (Fila Circular)**
+
+| Função | Comentário/Lógica |
+| :--- | :--- |
+| `inicializar_fila` | Zera os indicadores da fila (`inicio`, `fim`, `total`). |
+| `fila_cheia / fila_vazia` | Funções de validação baseadas no `total` de elementos. |
+| `enqueue(Fila *f, Peca p)` | Insere no `f->fim`, aplicando a lógica modular `(f->fim + 1) % MAX_FILA`. |
+| `dequeue(Fila *f)` | Remove do `f->inicio`, aplicando a lógica modular e retornando a peça removida. |
+| `mostrar_fila(Fila *f)` | Percorre os elementos do `inicio` até o `total`, exibindo a ordem atual da fila. |
+
+### **Funções Auxiliares**
+
+* `gerarPeca()`: Cria uma nova `Peca` com um tipo aleatório (entre 'I', 'O', 'T', 'L') e um `id` incremental global.
+* `limparBuffer()`: Trata o buffer de entrada (`stdin`) após o `scanf` para evitar erros no loop do menu.
+
+---
+
+## 🖥️ Como Executar
+
+1.  **Compilação:** Certifique-se de ter um compilador C (como GCC) instalado e execute:
+    ```bash
+    gcc nome_do_seu_arquivo.c -o tetris_stack
+    ```
+2.  **Execução:**
+    ```bash
+    ./tetris_stack
+    ```
+3.  **Interação:** Digite **1** para "Jogar peça" (dequeue e repor) e **0** para sair do programa.
 
 
 🚨 Atenção: O nível Novato foca apenas na fila de peças, usando conceitos básicos de structs, arrays e modularização.
