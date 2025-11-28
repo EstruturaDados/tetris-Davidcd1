@@ -149,7 +149,7 @@ int fila_vazia(Fila *f){
 
 // Retorna os itens na fila
 void mostrar_fila(Fila *f){
-    printf("🧩 Fila de Peças Futuras (%d/%d): ", f->total, MAX_FILA);
+    printf("🧩 Fila de Peças [%d | %d]: ", f->total, MAX_FILA);
     
     if(fila_vazia(f)) {
         printf("[VAZIA]\n");
@@ -164,7 +164,7 @@ void mostrar_fila(Fila *f){
     // 3. Percorre a fila imprimindo cada item
     while(count < f->total) {
         // Acessa a peça no índice atual
-        printf("[ID:%d|%c]", f->itens[i].id, f->itens[i].tipo);
+        printf("[%c | %d]", f->itens[i].tipo, f->itens[i].id);
         
         // Avança para o próximo índice de forma CIRCULAR
         i = (i + 1) % MAX_FILA;
@@ -226,7 +226,7 @@ Peca gerarPeca() {
 // Exibe as opções do menu
 void exibir_menu(){
     printf("---------------------------------------------------------------\n");
-    printf("----------------- Desafio Tetris Nível Mestre -----------------\n");
+    printf("----------------- Desafio Tetris Nível Novato -----------------\n");
     printf("---------------------------------------------------------------\n");
     printf("\n1. Jogar peça (remover da frente)");
     printf("\n0. Sair\n");
