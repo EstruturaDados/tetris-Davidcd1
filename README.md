@@ -70,6 +70,9 @@ O projeto é modularizado em funções, com base em conceitos de structs e array
 3.  **Interação:** Digite **1** para "Jogar peça" (dequeue e repor) e **0** para sair do programa.
 
 
+
+--------------------------------------------------------------------------------------------------------------------
+
 🚨 Atenção: O nível Novato foca apenas na fila de peças, usando conceitos básicos de structs, arrays e modularização.
 
 🎮 Nível Novato: Fila de Peças Futuras
